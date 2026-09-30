@@ -6,10 +6,10 @@
     <title>Ace of Bladez | Traditional Italian Barbers</title>
     <meta name="description" content="Ace Of Bladez is a traditional men's barbers with a modern edge situated in the heart of Pewsey Vale. Look Good - Smell Good - Feel Good.">
     
-    <!-- Fonts -->
+    <!-- Google Fonts: EB Garamond (Master Craft Humanist Typeface) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap" rel="stylesheet">
     
     <!-- FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -33,10 +33,17 @@
                         text: {
                             primary: '#ffffff',
                             secondary: '#888888',
+                        },
+                        italia: {
+                            green: '#029636',
+                            white: '#ffffff',
+                            red: '#e30510'
                         }
                     },
                     fontFamily: {
-                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        sans: ['"EB Garamond"', 'serif'],
+                        serif: ['"EB Garamond"', 'serif'],
+                        heading: ['"EB Garamond"', 'serif']
                     },
                     letterSpacing: {
                         widest: '.25em',
@@ -47,11 +54,25 @@
     </script>
 
     <style>
+        :root {
+            --site-font: 'EB Garamond', serif;
+            --heading-font: 'EB Garamond', serif;
+        }
+
         body {
             background-color: #050505;
             color: #ffffff;
+            font-family: 'EB Garamond', serif !important;
             -webkit-font-smoothing: antialiased;
             overflow-x: hidden;
+        }
+
+        body, button, input, select, textarea, .font-sans {
+            font-family: 'EB Garamond', serif !important;
+        }
+
+        h1, h2, h3, h4, .font-heading {
+            font-family: 'EB Garamond', serif !important;
         }
 
         /* Custom Scrollbar */
@@ -73,46 +94,83 @@
         .reveal-delay-1 { transition-delay: 0.15s; }
         .reveal-delay-2 { transition-delay: 0.3s; }
 
-        /* Button styling */
+        /* Refined Modern UI Typography & Buttons */
+        .btn-nav-book,
+        .btn-primary,
+        .btn-outline-clean {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
+        }
+
+        .btn-nav-book {
+            font-size: 0.6875rem !important;
+            letter-spacing: 0.12em !important;
+            font-weight: 700 !important;
+            text-transform: uppercase !important;
+            line-height: 1 !important;
+            white-space: nowrap !important;
+        }
+
+        /* Clean Solid Button — High-Contrast, Zero Neon Glow */
         .btn-primary {
             position: relative;
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            padding: 1rem 2rem;
+            padding: 0.6875rem 1.6rem;
             font-size: 0.75rem;
             text-transform: uppercase;
-            letter-spacing: 0.1em;
+            letter-spacing: 0.08em;
             font-weight: 700;
             color: #000000;
             background: #00bd7e;
             border: 1px solid #00bd7e;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0, 189, 126, 0.2);
+            border-radius: 2px;
+            line-height: 1.2;
+            transition: background-color 0.2s ease, transform 0.15s ease;
         }
         @media (min-width: 768px) {
             .btn-primary {
-                padding: 1rem 2.5rem;
-                font-size: 0.875rem;
+                padding: 0.75rem 1.75rem;
+                font-size: 0.75rem;
             }
         }
         .btn-primary:hover {
-            background: #00e096;
-            border-color: #00e096;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0, 189, 126, 0.4);
+            background: #00a870;
+            border-color: #00a870;
+            transform: translateY(-1px);
         }
 
-        /* Nav Transition */
-        #navbar {
-            transition: background-color 0.5s ease, backdrop-filter 0.5s ease, padding 0.5s ease;
+        .btn-outline-clean {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.6875rem 1.4rem;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            font-weight: 600;
+            color: #e0e0e0;
+            background: transparent;
+            border: 1px solid #333333;
+            border-radius: 2px;
+            line-height: 1.2;
+            transition: border-color 0.2s ease, color 0.2s ease;
         }
-        .nav-scrolled {
-            background-color: rgba(5, 5, 5, 0.95) !important;
-            backdrop-filter: blur(12px);
-            padding-top: 1rem !important;
-            padding-bottom: 1rem !important;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        @media (min-width: 768px) {
+            .btn-outline-clean {
+                padding: 0.75rem 1.5rem;
+                font-size: 0.75rem;
+            }
+        }
+        .btn-outline-clean:hover {
+            border-color: #ffffff;
+            color: #ffffff;
+        }
+
+        /* Static Navigation (Not Fixed) */
+        #navbar {
+            background-color: #050505;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
         }
 
         /* Map styling */
@@ -123,86 +181,200 @@
 </head>
 <body class="antialiased font-sans">
 
-    <!-- Navigation -->
-    <nav id="navbar" class="fixed w-full z-50 top-0 py-6 md:py-8 px-6 md:px-16 bg-transparent">
+    <!-- Navigation (Static / Not Fixed) -->
+    <nav id="navbar" class="relative w-full z-40 py-3 md:py-3.5 px-6 md:px-16 bg-[#050505]">
         <div class="max-w-[1400px] mx-auto flex justify-between items-center">
+            
+            <!-- High-Res Brand Logo with Italian Tricolore Base -->
             <a href="#" class="flex items-center gap-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded">
-                <img src="https://static.wixstatic.com/media/29ed6d_6035d8e76ff044c3b52b84102b11d9e6~mv2.png/v1/fill/w_1200,h_180,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/105515244_1716291681842278_3392712390563.png" alt="Ace of Bladez Logo" class="h-8 md:h-10 w-auto object-contain">
+                <img src="logo.png" alt="Ace of Bladez" class="h-6 sm:h-7 md:h-[28px] w-auto object-contain">
             </a>
             
             <!-- Desktop Menu -->
-            <div class="hidden md:flex gap-12 items-center">
-                <a href="#about" class="text-xs tracking-widest uppercase font-medium text-text-secondary hover:text-white transition-colors duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary py-1">About</a>
-                <a href="#contact" class="text-xs tracking-widest uppercase font-medium text-text-secondary hover:text-white transition-colors duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary py-1">Contact</a>
-                <a href="tel:07920074050" class="text-primary text-xs tracking-widest uppercase font-bold hover:text-white transition-colors duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary py-1">Book Now</a>
+            <div class="hidden md:flex gap-8 lg:gap-10 items-center">
+                <a href="#about" class="text-xs tracking-[0.2em] uppercase font-medium text-neutral-300 hover:text-white transition-colors duration-200">About</a>
+                <a href="#landscape-showcase" class="text-xs tracking-[0.2em] uppercase font-medium text-neutral-300 hover:text-white transition-colors duration-200">The Craft</a>
+                <a href="#gallery" class="text-xs tracking-[0.2em] uppercase font-medium text-neutral-300 hover:text-white transition-colors duration-200">Gallery</a>
+                <a href="#contact" class="text-xs tracking-[0.2em] uppercase font-medium text-neutral-300 hover:text-white transition-colors duration-200">Contact</a>
+            </div>
+
+            <!-- Navbar Action CTA -->
+            <div class="hidden md:flex items-center gap-4">
+                <a href="tel:07920074050" class="btn-nav-book group relative inline-flex items-center gap-2 px-4 py-2 rounded-[2px] bg-white text-black hover:bg-neutral-200 transition-colors">
+                    <span>Book Now</span>
+                    <span class="inline-flex items-center gap-0.5 ml-1">
+                        <span class="w-1 h-2 bg-[#029636]"></span>
+                        <span class="w-1 h-2 bg-neutral-300"></span>
+                        <span class="w-1 h-2 bg-[#e30510]"></span>
+                    </span>
+                </a>
             </div>
 
             <!-- Mobile Menu Button -->
-            <button id="mobile-menu-btn" class="md:hidden text-white hover:text-primary transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary p-2">
+            <button id="mobile-menu-btn" class="md:hidden text-white hover:text-primary transition-colors focus:outline-none p-2">
                 <i class="fa-solid fa-bars text-xl"></i>
             </button>
         </div>
+
+        <!-- Italian Tricolore Micro-Accent Hairline along Navbar Bottom -->
+        <div class="absolute bottom-0 left-0 w-full h-[2px] flex pointer-events-none opacity-90">
+            <div class="h-full flex-1 bg-[#029636]"></div>
+            <div class="h-full flex-1 bg-white"></div>
+            <div class="h-full flex-1 bg-[#e30510]"></div>
+        </div>
         
         <!-- Mobile Menu Dropdown -->
-        <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 w-full bg-surface-base border-b border-surface-raised flex-col shadow-2xl">
-            <a href="#about" class="px-8 py-5 border-b border-surface-raised text-xs tracking-widest uppercase font-medium text-white hover:text-primary transition-colors">About</a>
-            <a href="#contact" class="px-8 py-5 border-b border-surface-raised text-xs tracking-widest uppercase font-medium text-white hover:text-primary transition-colors">Contact</a>
-            <a href="tel:07920074050" class="px-8 py-5 text-primary text-xs tracking-widest uppercase font-bold hover:text-white transition-colors">Book Now</a>
+        <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 w-full bg-[#080808] border-b border-neutral-800 flex-col shadow-2xl">
+            <a href="#about" class="px-8 py-4 border-b border-neutral-800/80 text-xs tracking-widest uppercase font-medium text-white hover:text-primary transition-colors">About</a>
+            <a href="#landscape-showcase" class="px-8 py-4 border-b border-neutral-800/80 text-xs tracking-widest uppercase font-medium text-white hover:text-primary transition-colors">The Craft</a>
+            <a href="#gallery" class="px-8 py-4 border-b border-neutral-800/80 text-xs tracking-widest uppercase font-medium text-white hover:text-primary transition-colors">Gallery</a>
+            <a href="#contact" class="px-8 py-4 border-b border-neutral-800/80 text-xs tracking-widest uppercase font-medium text-white hover:text-primary transition-colors">Contact</a>
+            <div class="p-6">
+                <a href="tel:07920074050" class="btn-nav-book flex items-center justify-center gap-2 py-3 px-6 bg-white text-black rounded-sm">
+                    <span>Call to Book: 07920 074050</span>
+                    <span class="inline-flex items-center gap-0.5 ml-1">
+                        <span class="w-1 h-2 bg-[#029636]"></span>
+                        <span class="w-1 h-2 bg-neutral-300"></span>
+                        <span class="w-1 h-2 bg-[#e30510]"></span>
+                    </span>
+                </a>
+            </div>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <header class="relative h-[100svh] min-h-[600px] flex flex-col justify-center bg-surface-base overflow-hidden px-6 md:px-16">
-        <!-- Background Image with Cinematic Overlay -->
-        <div class="absolute inset-0 z-0">
-            <img src="https://static.wixstatic.com/media/16efc3_ea3aa4aab24449e3a21247afedbca507~mv2.jpg/v1/fill/w_1170,h_629,al_c,q_85,enc_avif,quality_auto/16efc3_ea3aa4aab24449e3a21247afedbca507~mv2.jpg" alt="Hero Background" class="w-full h-full object-cover opacity-[0.35] scale-105 transform origin-center">
-            <div class="absolute inset-0 bg-gradient-to-t from-surface-base via-surface-base/60 to-transparent"></div>
-            <div class="absolute inset-0 bg-gradient-to-b from-surface-base/80 via-transparent to-transparent"></div>
-        </div>
+    <!-- Hero Section (Editorial Atelier Direction - Guaranteed Above Fold) -->
+    <header class="relative min-h-[calc(100svh-55px)] flex flex-col justify-center bg-surface-base px-6 md:px-16 lg:px-24 py-4 sm:py-6 lg:py-6 overflow-hidden">
+        <div class="max-w-[1400px] w-full mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-center">
+            
+            <!-- Left Editorial Text (7 cols) -->
+            <div class="lg:col-span-7 flex flex-col items-start pr-0 lg:pr-4">
+                
+                <!-- Metadata Line with Italian Tricolore Accent -->
+                <div class="flex items-center gap-3 text-[11px] sm:text-xs tracking-[0.25em] uppercase text-neutral-400 mb-2 sm:mb-2.5 reveal">
+                    <span class="inline-flex items-center gap-1">
+                        <span class="w-2 h-2 rounded-xs bg-[#029636]"></span>
+                        <span class="w-2 h-2 rounded-xs bg-white"></span>
+                        <span class="w-2 h-2 rounded-xs bg-[#e30510]"></span>
+                    </span>
+                    <span class="text-white font-medium">Traditional Italian Barbers</span>
+                    <span class="text-neutral-700">/</span>
+                    <span>Pewsey Vale, Wiltshire</span>
+                </div>
 
-        <!-- Using pt-16 md:pt-0 to shift content up slightly on mobile so CTA doesn't get buried -->
-        <div class="relative z-10 max-w-[1400px] w-full mx-auto mt-12 md:mt-24 pt-4 md:pt-0">
-            <div class="max-w-4xl reveal">
-                <h4 class="text-primary font-bold tracking-widest uppercase text-[0.65rem] md:text-xs mb-4 md:mb-8">Ace Of Bladez</h4>
-                <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-[5.5rem] font-light tracking-tighter mb-4 md:mb-8 text-white leading-[1.15]">
-                    Look Good. <br class="hidden sm:block">
-                    <span class="text-white/70">Smell Good.</span> <br class="hidden sm:block">
-                    <span class="font-bold">Feel Good.</span>
+                <!-- Headline -->
+                <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] xl:text-[3.5rem] font-light tracking-tight text-white leading-[1.08] mb-2 sm:mb-2.5 reveal reveal-delay-1">
+                    Traditional craft. <br>
+                    <span class="font-bold text-white">Cut with modern edge.</span>
                 </h1>
-                <p class="text-base sm:text-lg md:text-xl text-text-secondary mb-8 md:mb-12 max-w-xl font-light leading-relaxed">
-                    Situated in the heart of Pewsey Vale. A traditional men's barbers with a modern edge.
+
+                <!-- Brand Motto -->
+                <div class="text-sm sm:text-base md:text-lg font-light text-neutral-300 tracking-wide mb-2 sm:mb-2.5 reveal reveal-delay-1">
+                    Look good. Smell good. Feel good.
+                </div>
+
+                <!-- Paragraph -->
+                <p class="text-xs sm:text-sm md:text-base text-neutral-400 font-light leading-relaxed max-w-lg mb-4 sm:mb-5 reveal reveal-delay-2">
+                    Every appointment is treated with bespoke precision—from traditional hot towel wet shaves to sharp, customized fades.
                 </p>
-                <div class="flex flex-col sm:flex-row gap-4 sm:gap-6">
-                    <a href="#about" class="btn-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-white w-full sm:w-auto">
-                        Discover More
+
+                <!-- Both CTA Sections: Strictly Visible Above The Fold -->
+                <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full sm:w-auto reveal reveal-delay-2">
+                    <a href="tel:07920074050" class="btn-primary">
+                        Book an Appointment
+                    </a>
+                    <a href="tel:07920074050" class="btn-outline-clean">
+                        <span>Direct: 07920 074050</span>
                     </a>
                 </div>
-            </div>
-        </div>
 
-        <!-- Scroll Indicator (hidden on very short mobile screens to preserve space) -->
-        <div class="absolute bottom-6 md:bottom-12 left-1/2 transform -translate-x-1/2 z-10 hidden sm:flex flex-col items-center gap-2 md:gap-3 reveal reveal-delay-2">
-            <span class="text-[0.6rem] md:text-[0.65rem] uppercase tracking-widest text-text-secondary">Scroll</span>
-            <div class="w-[1px] h-8 md:h-12 bg-white/20 relative overflow-hidden">
-                <div class="absolute top-0 left-0 w-full h-1/2 bg-white animate-[scroll_2s_ease-in-out_infinite]"></div>
+                <!-- Subtle Baseline Metadata -->
+                <div class="mt-4 sm:mt-5 pt-3 border-t border-white/10 w-full flex items-center gap-6 sm:gap-8 text-[11px] sm:text-xs text-neutral-500 uppercase tracking-widest reveal reveal-delay-2">
+                    <span>Scissor Work</span>
+                    <span class="text-neutral-700">•</span>
+                    <span>Hot Towel Ritual</span>
+                    <span class="text-neutral-700">•</span>
+                    <span>Skin Fades</span>
+                </div>
+
             </div>
+
+            <!-- Right Visual: High-Contrast Editorial Portrait (5 cols) -->
+            <div class="lg:col-span-5 relative reveal reveal-delay-1">
+                <div class="relative bg-neutral-900 overflow-hidden border border-neutral-800">
+                    <img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?q=80&w=1200&auto=format&fit=crop" 
+                         alt="Traditional Barber Chair Craft" 
+                         class="w-full h-[280px] sm:h-[320px] md:h-[350px] lg:h-[380px] xl:h-[400px] object-cover contrast-105 brightness-100 hover:scale-105 transition-all duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-transparent opacity-40 pointer-events-none"></div>
+                    
+                    <!-- Clean Editorial Caption -->
+                    <div class="absolute bottom-4 left-4 right-4 flex justify-between items-end text-[11px] uppercase tracking-widest text-neutral-400">
+                        <span>The Barber Chair</span>
+                        <span class="text-neutral-500">Heritage Grooming</span>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </header>
+
+    <!-- Full-Screen Landscape Showcase (Smooth Overlapping Scroll Experience) -->
+    <div class="relative w-full z-10 bg-surface-base">
+        <section id="landscape-showcase" class="sticky top-0 h-[100vh] w-full overflow-hidden flex items-end">
+            <!-- Fullscreen Landscape Image of Real Shop -->
+            <img src="https://static.wixstatic.com/media/16efc3_ea3aa4aab24449e3a21247afedbca507~mv2.jpg/v1/fill/w_1170,h_629,al_c,q_85,enc_avif,quality_auto/16efc3_ea3aa4aab24449e3a21247afedbca507~mv2.jpg" 
+                 alt="Ace of Bladez Barber in Session" 
+                 id="landscape-parallax-img"
+                 class="absolute inset-0 w-full h-full object-cover object-center filter brightness-[0.75] contrast-105 will-change-transform transition-transform duration-200">
+            <div class="absolute inset-0 bg-gradient-to-t from-[#050505] via-black/25 to-black/50 pointer-events-none"></div>
+            
+            <!-- Landscape Editorial Content Overlay -->
+            <div class="relative z-10 max-w-[1400px] w-full mx-auto px-6 md:px-16 pb-16 md:pb-24 flex flex-col sm:flex-row sm:items-end justify-between gap-6 pointer-events-none">
+                <div>
+                    <div class="flex items-center gap-2 mb-2">
+                        <span class="inline-flex items-center gap-1">
+                            <span class="w-1.5 h-1.5 rounded-full bg-[#029636]"></span>
+                            <span class="w-1.5 h-1.5 rounded-full bg-white"></span>
+                            <span class="w-1.5 h-1.5 rounded-full bg-[#e30510]"></span>
+                        </span>
+                        <span class="text-xs uppercase tracking-[0.3em] text-[#029636] font-bold">The Craft in Session</span>
+                    </div>
+                    <h2 class="text-3xl sm:text-4xl md:text-5xl font-light text-white tracking-tight leading-tight max-w-xl">
+                        Bespoke cuts, tailored individually for every gentleman.
+                    </h2>
+                </div>
+                <div class="text-left sm:text-right">
+                    <span class="text-xs uppercase tracking-widest text-neutral-400 block mb-1">Atelier</span>
+                    <p class="text-sm font-medium text-white tracking-wide">Pewsey Vale, Wiltshire</p>
+                </div>
+            </div>
+        </section>
+    </div>
 
     <style>
         @keyframes scroll {
             0% { transform: translateY(-100%); }
             100% { transform: translateY(200%); }
         }
+        @keyframes kenburns {
+            0% { transform: scale(1.02); }
+            100% { transform: scale(1.15); }
+        }
     </style>
 
-    <!-- About Section -->
-    <section id="about" class="py-24 md:py-32 lg:py-48 px-6 md:px-16 bg-surface-base">
+    <!-- About Section (Smoothly overlaps the landscape image as user scrolls) -->
+    <section id="about" class="relative z-20 bg-surface-base rounded-t-[32px] md:rounded-t-[48px] shadow-[0_-30px_90px_rgba(0,0,0,0.95)] border-t border-neutral-800/80 py-24 md:py-32 lg:py-48 px-6 md:px-16">
         <div class="max-w-[1400px] mx-auto flex flex-col lg:flex-row gap-16 lg:gap-32 items-center">
             
             <!-- Text Content -->
             <div class="flex-1 lg:pr-12">
-                <h4 class="text-primary font-bold tracking-widest uppercase text-xs mb-6 md:mb-8 reveal">The Heritage</h4>
+                <div class="flex items-center gap-2.5 mb-6 md:mb-8 reveal">
+                    <span class="inline-flex items-center gap-1">
+                        <span class="w-2 h-2 rounded-xs bg-[#029636]"></span>
+                        <span class="w-2 h-2 rounded-xs bg-white"></span>
+                        <span class="w-2 h-2 rounded-xs bg-[#e30510]"></span>
+                    </span>
+                    <h4 class="text-[#029636] font-bold tracking-widest uppercase text-xs">The Heritage</h4>
+                </div>
                 <h2 class="text-3xl md:text-5xl lg:text-6xl font-light mb-8 md:mb-12 leading-[1.2] reveal reveal-delay-1 text-white">
                     Traditional <br><span class="font-bold">Italian Barbers</span>
                 </h2>
@@ -228,11 +400,174 @@
                 <div class="aspect-[4/5] w-full max-w-sm lg:max-w-lg mx-auto overflow-hidden bg-surface-raised relative">
                     <img src="https://static.wixstatic.com/media/16efc3_2ccdebe462804c2bbe7755cbb854cede~mv2.jpg/v1/fill/w_800,h_800,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/424A7A75-E02D-498E-959A-80FBDC013957.jpg" 
                          alt="Barber cutting hair" 
-                         class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-[1.5s] ease-out scale-105 hover:scale-100 opacity-90 hover:opacity-100">
+                         class="w-full h-full object-cover contrast-105 brightness-100 transition-all duration-[1.5s] ease-out scale-105 hover:scale-100">
                 </div>
                 <!-- Decorative Elements -->
                 <div class="absolute -bottom-4 md:-bottom-8 -right-4 md:-right-8 w-24 md:w-32 h-24 md:h-32 border-b border-r border-primary/30 z-[-1]"></div>
                 <div class="absolute -top-4 md:-top-8 -left-4 md:-left-8 w-24 md:w-32 h-24 md:h-32 border-t border-l border-primary/30 z-[-1]"></div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Gallery Section (Curated Portfolio of Works) -->
+    <section id="gallery" class="py-24 md:py-32 lg:py-40 px-6 md:px-16 bg-[#060606] border-t border-neutral-800/80">
+        <div class="max-w-[1400px] mx-auto">
+            
+            <!-- Section Header -->
+            <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 md:mb-16">
+                <div>
+                    <div class="flex items-center gap-2.5 mb-4 reveal">
+                        <span class="inline-flex items-center gap-1">
+                            <span class="w-2 h-2 rounded-xs bg-[#029636]"></span>
+                            <span class="w-2 h-2 rounded-xs bg-white"></span>
+                            <span class="w-2 h-2 rounded-xs bg-[#e30510]"></span>
+                        </span>
+                        <span class="text-xs uppercase tracking-[0.25em] font-semibold text-[#029636]">The Portfolio</span>
+                    </div>
+                    <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light text-white tracking-tight leading-tight reveal reveal-delay-1">
+                        Craft & <span class="font-bold">Artistry.</span>
+                    </h2>
+                    <p class="text-sm md:text-base text-neutral-400 font-light mt-3 max-w-xl reveal reveal-delay-2">
+                        Precision fades, bespoke beard sculpts, and traditional Italian wet shaves. A curated glance at daily works from the Pewsey Vale chair.
+                    </p>
+                </div>
+                
+                <div class="reveal reveal-delay-2 flex items-center gap-3">
+                    <span class="text-xs uppercase tracking-widest text-neutral-400">Click any image to enlarge</span>
+                    <span class="text-neutral-700">•</span>
+                    <a href="tel:07920074050" class="text-xs uppercase tracking-widest text-primary font-bold hover:underline">
+                        Book Your Cut →
+                    </a>
+                </div>
+            </div>
+
+            <!-- Asymmetrical Architectural Gallery Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-5 md:gap-6">
+                
+                <!-- Item 1: Vertical Portrait (Fade & Texture) -->
+                <div class="md:col-span-5 relative group overflow-hidden bg-neutral-900 border border-neutral-800 reveal cursor-pointer h-full" onclick="openLightbox('https://static.wixstatic.com/media/16efc3_94f191b3d23b4459a127205e33e627d3~mv2.jpg/v1/fit/w_625,h_817,q_90,enc_avif,quality_auto/16efc3_94f191b3d23b4459a127205e33e627d3~mv2.jpg', '01 / Precision Skin Fade & Textured Crop')">
+                    <div class="w-full h-full min-h-[440px] sm:min-h-[500px] md:min-h-[560px] lg:min-h-[640px] overflow-hidden">
+                        <img src="https://static.wixstatic.com/media/16efc3_94f191b3d23b4459a127205e33e627d3~mv2.jpg/v1/fit/w_625,h_817,q_90,enc_avif,quality_auto/16efc3_94f191b3d23b4459a127205e33e627d3~mv2.jpg" 
+                             alt="Precision Skin Fade & Textured Crop" 
+                             class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105 contrast-105 brightness-100">
+                    </div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                        <div class="w-full flex items-center justify-between text-xs uppercase tracking-widest text-white">
+                            <span>01 / Textured Skin Fade</span>
+                            <span class="text-neutral-400 text-[10px]">Enlarge <i class="fa-solid fa-expand ml-1"></i></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 2: Featured Landscape (Barbering In Action) -->
+                <div class="md:col-span-7 relative group overflow-hidden bg-neutral-900 border border-neutral-800 reveal reveal-delay-1 cursor-pointer h-full" onclick="openLightbox('https://static.wixstatic.com/media/16efc3_586b215b9f1641909aeacfb46d65f64c~mv2.jpg/v1/fit/w_1390,h_971,q_90,enc_avif,quality_auto/16efc3_586b215b9f1641909aeacfb46d65f64c~mv2.jpg', '02 / Authentic Scissor Technique & Craftsmanship')">
+                    <div class="w-full h-full min-h-[440px] sm:min-h-[500px] md:min-h-[560px] lg:min-h-[640px] overflow-hidden">
+                        <img src="https://static.wixstatic.com/media/16efc3_586b215b9f1641909aeacfb46d65f64c~mv2.jpg/v1/fit/w_1390,h_971,q_90,enc_avif,quality_auto/16efc3_586b215b9f1641909aeacfb46d65f64c~mv2.jpg" 
+                             alt="Authentic Scissor Technique & Craftsmanship" 
+                             class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105 contrast-105 brightness-100">
+                    </div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                        <div class="w-full flex items-center justify-between text-xs uppercase tracking-widest text-white">
+                            <span>02 / Scissor Technique & Craft</span>
+                            <span class="text-neutral-400 text-[10px]">Enlarge <i class="fa-solid fa-expand ml-1"></i></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 3: Landscape (Low Skin Fade & Beard Detail) -->
+                <div class="md:col-span-4 relative group overflow-hidden bg-neutral-900 border border-neutral-800 reveal cursor-pointer" onclick="openLightbox('https://static.wixstatic.com/media/16efc3_cd54fb2f10094cc58415b2d96e715a9a~mv2.jpg/v1/fit/w_1484,h_1039,q_90,enc_avif,quality_auto/16efc3_cd54fb2f10094cc58415b2d96e715a9a~mv2.jpg', '03 / Low Fade & Beard Sculpt')">
+                    <div class="aspect-[4/3] w-full overflow-hidden">
+                        <img src="https://static.wixstatic.com/media/16efc3_cd54fb2f10094cc58415b2d96e715a9a~mv2.jpg/v1/fit/w_1484,h_1039,q_90,enc_avif,quality_auto/16efc3_cd54fb2f10094cc58415b2d96e715a9a~mv2.jpg" 
+                             alt="Low Fade & Beard Sculpt" 
+                             class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105 contrast-105 brightness-100">
+                    </div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-5">
+                        <div class="w-full flex items-center justify-between text-xs uppercase tracking-widest text-white">
+                            <span>03 / Fade & Beard Sculpt</span>
+                            <span class="text-neutral-400 text-[10px]">Enlarge <i class="fa-solid fa-expand ml-1"></i></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 4: Vertical Portrait (Razor Lineup) -->
+                <div class="md:col-span-4 relative group overflow-hidden bg-neutral-900 border border-neutral-800 reveal reveal-delay-1 cursor-pointer" onclick="openLightbox('https://static.wixstatic.com/media/16efc3_8ba370574b0648cfa7ffb444232b36c3~mv2.jpg/v1/fit/w_625,h_817,q_90,enc_avif,quality_auto/16efc3_8ba370574b0648cfa7ffb444232b36c3~mv2.jpg', '04 / Razor-Sharp Lineup & Fade')">
+                    <div class="aspect-[4/3] w-full overflow-hidden">
+                        <img src="https://static.wixstatic.com/media/16efc3_8ba370574b0648cfa7ffb444232b36c3~mv2.jpg/v1/fit/w_625,h_817,q_90,enc_avif,quality_auto/16efc3_8ba370574b0648cfa7ffb444232b36c3~mv2.jpg" 
+                             alt="Razor-Sharp Lineup & Fade" 
+                             class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105 contrast-105 brightness-100">
+                    </div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-5">
+                        <div class="w-full flex items-center justify-between text-xs uppercase tracking-widest text-white">
+                            <span>04 / Razor Lineup</span>
+                            <span class="text-neutral-400 text-[10px]">Enlarge <i class="fa-solid fa-expand ml-1"></i></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 5: Square-ish Detail (Classic Styling) -->
+                <div class="md:col-span-4 relative group overflow-hidden bg-neutral-900 border border-neutral-800 reveal reveal-delay-2 cursor-pointer" onclick="openLightbox('https://static.wixstatic.com/media/29ed6d_49114ab046344de598e5f9a1748e27d2~mv2.jpg/v1/fit/w_739,h_722,q_90,enc_avif,quality_auto/29ed6d_49114ab046344de598e5f9a1748e27d2~mv2.jpg', '05 / Classic Modern Gentleman Styling')">
+                    <div class="aspect-[4/3] w-full overflow-hidden">
+                        <img src="https://static.wixstatic.com/media/29ed6d_49114ab046344de598e5f9a1748e27d2~mv2.jpg/v1/fit/w_739,h_722,q_90,enc_avif,quality_auto/29ed6d_49114ab046344de598e5f9a1748e27d2~mv2.jpg" 
+                             alt="Classic Modern Gentleman Styling" 
+                             class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105 contrast-105 brightness-100">
+                    </div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-5">
+                        <div class="w-full flex items-center justify-between text-xs uppercase tracking-widest text-white">
+                            <span>05 / Bespoke Styling</span>
+                            <span class="text-neutral-400 text-[10px]">Enlarge <i class="fa-solid fa-expand ml-1"></i></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 6: Landscape (Hot Towel Wet Shave) -->
+                <div class="md:col-span-6 relative group overflow-hidden bg-neutral-900 border border-neutral-800 reveal cursor-pointer" onclick="openLightbox('https://static.wixstatic.com/media/16efc3_ab5ddd14288d40ca9ff4df9162d859f9~mv2.jpg/v1/fit/w_1424,h_1010,q_90,enc_avif,quality_auto/16efc3_ab5ddd14288d40ca9ff4df9162d859f9~mv2.jpg', '06 / Traditional Italian Hot Towel Wet Shave')">
+                    <div class="aspect-[16/10] w-full overflow-hidden">
+                        <img src="https://static.wixstatic.com/media/16efc3_ab5ddd14288d40ca9ff4df9162d859f9~mv2.jpg/v1/fit/w_1424,h_1010,q_90,enc_avif,quality_auto/16efc3_ab5ddd14288d40ca9ff4df9162d859f9~mv2.jpg" 
+                             alt="Traditional Italian Hot Towel Wet Shave" 
+                             class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105 contrast-105 brightness-100">
+                    </div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                        <div class="w-full flex items-center justify-between text-xs uppercase tracking-widest text-white">
+                            <span>06 / Traditional Hot Towel Shave</span>
+                            <span class="text-neutral-400 text-[10px]">Enlarge <i class="fa-solid fa-expand ml-1"></i></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 7: Landscape (Master Barber in Session) -->
+                <div class="md:col-span-6 relative group overflow-hidden bg-neutral-900 border border-neutral-800 reveal reveal-delay-1 cursor-pointer" onclick="openLightbox('https://static.wixstatic.com/media/16efc3_aea3426a6992488aafd3b85d79ae3c95~mv2.jpg/v1/fit/w_1501,h_1026,q_90,enc_avif,quality_auto/16efc3_aea3426a6992488aafd3b85d79ae3c95~mv2.jpg', '07 / Barbering in Session — Pewsey Vale')">
+                    <div class="aspect-[16/10] w-full overflow-hidden">
+                        <img src="https://static.wixstatic.com/media/16efc3_aea3426a6992488aafd3b85d79ae3c95~mv2.jpg/v1/fit/w_1501,h_1026,q_90,enc_avif,quality_auto/16efc3_aea3426a6992488aafd3b85d79ae3c95~mv2.jpg" 
+                             alt="Barbering in Session" 
+                             class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105 contrast-105 brightness-100">
+                    </div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                        <div class="w-full flex items-center justify-between text-xs uppercase tracking-widest text-white">
+                            <span>07 / Precision in Session</span>
+                            <span class="text-neutral-400 text-[10px]">Enlarge <i class="fa-solid fa-expand ml-1"></i></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 8: Wide Cinematic Showcase (The Shop Atmosphere) -->
+                <div class="md:col-span-12 relative group overflow-hidden bg-neutral-900 border border-neutral-800 reveal cursor-pointer" onclick="openLightbox('https://static.wixstatic.com/media/16efc3_5cde57fbc21f43558aabecb4205b1ec7~mv2.jpg/v1/fit/w_1956,h_1059,q_90,enc_avif,quality_auto/16efc3_5cde57fbc21f43558aabecb4205b1ec7~mv2.jpg', '08 / Ace of Bladez Atelier — Pewsey Vale, Wiltshire')">
+                    <div class="aspect-[16/9] md:aspect-[21/9] w-full overflow-hidden">
+                        <img src="https://static.wixstatic.com/media/16efc3_5cde57fbc21f43558aabecb4205b1ec7~mv2.jpg/v1/fit/w_1956,h_1059,q_90,enc_avif,quality_auto/16efc3_5cde57fbc21f43558aabecb4205b1ec7~mv2.jpg" 
+                             alt="Ace of Bladez Atelier" 
+                             class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105 contrast-105 brightness-100">
+                    </div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6 md:p-8">
+                        <div class="w-full flex flex-col sm:flex-row justify-between sm:items-end gap-2 text-xs uppercase tracking-widest text-white">
+                            <div>
+                                <span class="font-bold text-sm block">08 / The Atelier</span>
+                                <span class="text-neutral-400 text-[11px]">Heart of Pewsey Vale, Wiltshire</span>
+                            </div>
+                            <span class="text-neutral-400 text-[10px]">Click to View Full Panorama <i class="fa-solid fa-expand ml-1"></i></span>
+                        </div>
+                    </div>
+                </div>
+
             </div>
 
         </div>
@@ -325,13 +660,21 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-surface-base border-t border-surface-raised py-12 md:py-16 px-6 md:px-16">
+    <footer class="bg-surface-base border-t border-surface-raised py-12 md:py-16 px-6 md:px-16 relative">
         <div class="max-w-[1400px] mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
             <div class="flex items-center gap-4">
-                <img src="https://static.wixstatic.com/media/29ed6d_6035d8e76ff044c3b52b84102b11d9e6~mv2.png/v1/fill/w_1200,h_180,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/105515244_1716291681842278_3392712390563.png" alt="Ace of Bladez" class="h-6 md:h-8 opacity-50 hover:opacity-100 transition-opacity duration-500">
+                <img src="logo.png" alt="Ace of Bladez" class="h-7 md:h-8 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity duration-300">
             </div>
             
-            <div class="flex flex-col md:flex-row items-center gap-4 md:gap-12">
+            <div class="flex flex-col md:flex-row items-center gap-4 md:gap-10">
+                <div class="flex items-center gap-2 text-[11px] uppercase tracking-widest text-neutral-400">
+                    <span class="inline-flex items-center gap-1">
+                        <span class="w-1.5 h-1.5 rounded-full bg-[#029636]"></span>
+                        <span class="w-1.5 h-1.5 rounded-full bg-white"></span>
+                        <span class="w-1.5 h-1.5 rounded-full bg-[#e30510]"></span>
+                    </span>
+                    <span>Traditional Italian Barbers • Pewsey Vale</span>
+                </div>
                 <p class="text-text-secondary text-[0.65rem] md:text-xs tracking-widest uppercase">
                     &copy; <script>document.write(new Date().getFullYear())</script> Ace of Bladez
                 </p>
@@ -342,16 +685,6 @@
 
     <!-- Scripts -->
     <script>
-        // Navbar Scroll Effect
-        const navbar = document.getElementById('navbar');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                navbar.classList.add('nav-scrolled');
-            } else {
-                navbar.classList.remove('nav-scrolled');
-            }
-        });
-
         // Mobile Menu Toggle
         const menuBtn = document.getElementById('mobile-menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
@@ -388,6 +721,82 @@
         document.querySelectorAll('.reveal').forEach((elem) => {
             observer.observe(elem);
         });
+
+        // Smooth Parallax / Depth on Full-Screen Landscape Showcase
+        const landscapeImg = document.getElementById('landscape-parallax-img');
+        const landscapeShowcase = document.getElementById('landscape-showcase');
+        if (landscapeImg && landscapeShowcase) {
+            let ticking = false;
+            window.addEventListener('scroll', () => {
+                if (!ticking) {
+                    window.requestAnimationFrame(() => {
+                        const rect = landscapeShowcase.getBoundingClientRect();
+                        const windowHeight = window.innerHeight;
+                        if (rect.top <= windowHeight && rect.bottom >= 0) {
+                            const progress = Math.max(0, Math.min(1, 1 - (rect.bottom / (windowHeight + rect.height))));
+                            const scale = 1 + (progress * 0.08); // Subtle natural zoom
+                            const translateY = progress * 24; // Subtle organic depth
+                            landscapeImg.style.transform = `scale(${scale}) translateY(${translateY}px)`;
+                        }
+                        ticking = false;
+                    });
+                    ticking = true;
+                }
+            }, { passive: true });
+        }
+
+        // Gallery Lightbox Handlers
+        function openLightbox(src, caption) {
+            const lb = document.getElementById('gallery-lightbox');
+            const img = document.getElementById('lightbox-img');
+            const cap = document.getElementById('lightbox-caption');
+            if (!lb || !img) return;
+            img.src = src;
+            if (cap) cap.textContent = caption || '';
+            lb.classList.remove('hidden');
+            lb.classList.add('flex');
+            setTimeout(() => {
+                lb.classList.remove('opacity-0');
+                lb.classList.add('opacity-100');
+            }, 10);
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            const lb = document.getElementById('gallery-lightbox');
+            if (!lb) return;
+            lb.classList.remove('opacity-100');
+            lb.classList.add('opacity-0');
+            setTimeout(() => {
+                lb.classList.remove('flex');
+                lb.classList.add('hidden');
+                document.body.style.overflow = '';
+            }, 250);
+        }
+
+        // Close lightbox on Escape key or backdrop click
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeLightbox();
+            }
+        });
+        const lightboxEl = document.getElementById('gallery-lightbox');
+        if (lightboxEl) {
+            lightboxEl.addEventListener('click', (e) => {
+                if (e.target === lightboxEl) closeLightbox();
+            });
+        }
     </script>
+
+    <!-- Gallery Lightbox Modal -->
+    <div id="gallery-lightbox" class="fixed inset-0 z-[100] bg-black/95 backdrop-blur-xl hidden flex-col justify-center items-center p-4 md:p-8 transition-opacity duration-300 opacity-0 cursor-zoom-out">
+        <button onclick="closeLightbox()" class="absolute top-5 right-5 text-white/60 hover:text-white text-2xl p-3 focus:outline-none transition-colors" aria-label="Close Preview">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+        <div class="relative max-w-5xl max-h-[85vh] flex flex-col items-center cursor-default" onclick="event.stopPropagation()">
+            <img id="lightbox-img" src="" alt="Gallery Preview" class="max-h-[75vh] w-auto max-w-full object-contain rounded-xs border border-white/10 shadow-2xl">
+            <div id="lightbox-caption" class="mt-4 text-center text-xs tracking-widest uppercase text-neutral-300 font-medium"></div>
+        </div>
+    </div>
 </body>
 </html>
